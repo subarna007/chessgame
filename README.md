@@ -1,6 +1,6 @@
 
 ### Chess Game (VS Computer)
-![screenshot](screenshot.png)
+![Screenshot](screenshot.png)
 
 1. **Piece Placement (8 ranks)**: This field represents the positions of the pieces on the board. Each rank is represented by a series of characters, where:
    - `K` represents a white king.
