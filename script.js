@@ -6,12 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let moveCount = 1; // Initialize the move count
     let userColor = 'w'; // Initialize the user's color as white
 
+    // Explain why the game ended (checkmate is not the only way)
+    const gameOverMessage = () => {
+        if (game.in_checkmate()) return "Checkmate! " + (game.turn() === "w" ? "Black" : "White") + " wins.";
+        if (game.in_stalemate()) return "Stalemate: draw.";
+        if (game.in_threefold_repetition()) return "Draw by threefold repetition.";
+        if (game.insufficient_material()) return "Draw: insufficient material.";
+        return "Draw (50-move rule).";
+    };
+
     // Function to make a random move for the computer
     const makeRandomMove = () => {
         const possibleMoves = game.moves();
 
         if (game.game_over()) {
-            alert("Checkmate!");
+            alert(gameOverMessage());
         } else {
             const randomIdx = Math.floor(Math.random() * possibleMoves.length);
             const move = possibleMoves[randomIdx];
